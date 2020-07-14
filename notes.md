@@ -47,8 +47,9 @@ should not see signup or login if already logged in
 
 Helper methods
 the helper methods should be available to the other controllers via the application controller
+
 Schedule
-set up classes
+xset up classes
 set up database
 set up controllers
 set up models
