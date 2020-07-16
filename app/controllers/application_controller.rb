@@ -20,7 +20,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def current_user
-      @current_user ||= User.find_by(id: session[:user_id])
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
 
     def authorized_to_edit?(review)
@@ -30,13 +30,17 @@ class ApplicationController < Sinatra::Base
     def redirect_if_not_logged_in
       redirect '/'
     end
+    
+    def user
+      @user = User.create(:username => params[:username], :password => params[:password])
+    end
    
     def redirect_if_logged_in
       if logged_in?
-        redirect "/users/#{current_user.id}"
+        redirect "/users/#{user.id}"
       end
     end
 
   end
 
-end  
+end   
