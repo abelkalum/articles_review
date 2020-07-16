@@ -1,0 +1,13 @@
+<% @reviews.each do |review| %>
+     <i>Article Title:</i> <%= review.article.title %> <br>
+     <i>Article Author:</i> <%= review.article.author %> <br>
+     <i>Your Article Review:</i> <%= review.text %> <br>
+ 
+     <a class="button" href="/reviews/<%=review.id%>/edit">Edit</a> <br>
+ 
+     <form method="post" action="/reviews/<%= review.id %>">
+     <input type="hidden" name="_method" value="delete">
+     <input type="submit" value="Delete">
+</form> <br> <br> <br>
+<% end %>
+<a class="button" href="/users/user_home">Home</a>
