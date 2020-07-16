@@ -18,11 +18,15 @@ class UsersController < ApplicationController
   end
  
   post '/login' do
-    redirect "users/#{@user.id}"
+    redirect "users/#{@user_id}"
   end
 
   get '/users/:id' do
 
+    erb :'/users/show'
+  end
+  
+  get '/users/' do
     erb :'/users/show'
   end
 

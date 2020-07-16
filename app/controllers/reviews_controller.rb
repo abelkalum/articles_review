@@ -5,14 +5,14 @@
     erb :'reviews/index'
   end
 
-  get '/reviews/new' do
+   get '/reviews/new' do
     redirect_if_not_logged_in
     erb :'/reviews/new'
   end
 
   post '/reviews' do
     redirect_if_not_logged_in
-    @review = Review.create(user_id: @user.id, article_id: @article.id, text: params[:user][:review])
+    @review = Review.create(user_id: @current_user.id, article_id: @article.id, text: params[:user][:review])
     redirect "/reviews/#{@review.id}"
   end
 
