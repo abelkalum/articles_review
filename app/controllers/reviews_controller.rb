@@ -1,19 +1,21 @@
  class ReviewsController < ApplicationController
 
   get '/reviews' do
+    @user = current_user
     @reviews = Review.all
     erb :'reviews/index'
   end
 
-   get '/reviews/new' do
+  get '/reviews/new' do
     redirect_if_not_logged_in
+    @articles = Article.all
     erb :'/reviews/new'
   end
 
   post '/reviews' do
-    if params[:content] != ""
+    if params[:text] != ""
       redirect_if_not_logged_in
-      @review = Review.create(text: params[:text], user_id: @current_user.id, article_id: @article.id)
+      @review = Review.create(text: params[:text], user_id: @user.id, article_id: @article.id)
       redirect "/reviews/#{@review.id}"
     else
       redirect '/reviews/new'
