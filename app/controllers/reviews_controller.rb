@@ -13,9 +13,9 @@
   end
 
   post '/reviews' do
+    redirect_if_not_logged_in
     if params[:text] != ""
-      redirect_if_not_logged_in
-      @review = Review.create(text: params[:text], user_id: @user.id, article_id: @article.id)
+      @review = Review.create(text: params[:text], user_id: current_user.id, article_id: @article.id)
       redirect "/reviews/#{@review.id}"
     else
       redirect '/reviews/new'
