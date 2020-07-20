@@ -1,9 +1,10 @@
 <!-- User's home page -->
-
-<b> You are logged in as <%= @user.username %> </b><br> <br>
+<p>
+Welcome, <%= @user.username %> <br> <br>
  
 <a class="button" href="/reviews/new"> Review an article </a><br> <br>
  
 <a class="button" href="/reviews"> See your reviews </a><br> <br>
 
 <a class="button" href="/logout"> Log Out </a>
+</p>
