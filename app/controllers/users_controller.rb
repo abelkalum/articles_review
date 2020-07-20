@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   end
   
   get '/users/:id' do
-    @user = User.find_by(id: session[:user_id])
+    @user = User.find_by(username: params[:username])
     redirect_if_not_logged_in
     
     erb :'/users/show'
