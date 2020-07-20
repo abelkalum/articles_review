@@ -1,4 +1,7 @@
-require './config/environment'
+require "./config/environment"
+require "./app/models/user"
+require "./app/models/article"
+require "./app/models/review"
 
 class ApplicationController < Sinatra::Base
 
